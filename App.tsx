@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { ToastsView } from './views/Toasts.view';
+import { ToastsView } from './views/Toasts/Toasts.view';
 import { TestView } from './views/Test.view';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -11,7 +11,7 @@ const App: React.FC = () => (
   <NavigationContainer>
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+        tabBarIcon: ({ color, size }) => {
           switch (route.name) {
             case 'Toasts':
               return (
