@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ToastsView } from './views/Toasts/Toasts.view';
 import { TestView } from './views/Test.view';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { DownloadView } from './views/Download/Download.view';
+import { DashboardView } from './views/Dashboard/Dashboard.view';
 
 const Tab = createBottomTabNavigator();
 
@@ -12,24 +14,16 @@ const App: React.FC = () => (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
-          switch (route.name) {
-            case 'Toasts':
-              return (
-                <MaterialCommunityIcons
-                  name="toaster-oven"
-                  size={size}
-                  color={color}
-                />
-              );
-            default:
-              return (
-                <MaterialCommunityIcons
-                  name="access-point"
-                  size={size}
-                  color={color}
-                />
-              );
-          }
+          const iconName =
+            ({
+              Dashboard: 'tablet-dashboard',
+              Toasts: 'toaster-oven',
+              Download: 'download',
+            } as any)[route.name as any] || 'access-point';
+
+          return (
+            <MaterialCommunityIcons name={iconName} size={size} color={color} />
+          );
         },
       })}
       tabBarOptions={{
@@ -37,6 +31,8 @@ const App: React.FC = () => (
         inactiveTintColor: 'gray',
       }}
     >
+      <Tab.Screen name="Dashboard" component={DashboardView} />
+      <Tab.Screen name="Download" component={DownloadView} />
       <Tab.Screen name="Toasts" component={ToastsView} />
       <Tab.Screen name="Testing" component={TestView} />
     </Tab.Navigator>
