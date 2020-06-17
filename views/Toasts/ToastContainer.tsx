@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { omit } from 'lodash';
+import { generateUID } from '../../utils/generateUID';
 
 export type ToastType = {
   id: string;
@@ -33,7 +34,7 @@ export const ToastContainer: React.FC = ({ children }) => {
 
   // Create a toast
   const createToast = React.useCallback((message: string) => {
-    const id = Math.floor(1000000 * Math.random()) + message;
+    const id = generateUID();
     setToasts((toasts) => ({
       ...toasts,
       [id]: {

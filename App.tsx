@@ -2,10 +2,10 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ToastsView } from './views/Toasts/Toasts.view';
-import { TestView } from './views/Test.view';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { DownloadView } from './views/Download/Download.view';
 import { DashboardView } from './views/Dashboard/Dashboard.view';
+import { ConfettiView } from './views/Confetti/Confetti.view';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,6 +19,7 @@ const App: React.FC = () => (
               Dashboard: 'tablet-dashboard',
               Toasts: 'toaster-oven',
               Download: 'download',
+              Confetti: 'air-horn',
             } as any)[route.name as any] || 'access-point';
 
           return (
@@ -31,10 +32,10 @@ const App: React.FC = () => (
         inactiveTintColor: 'gray',
       }}
     >
+      <Tab.Screen name="Confetti" component={ConfettiView} />
       <Tab.Screen name="Dashboard" component={DashboardView} />
       <Tab.Screen name="Download" component={DownloadView} />
       <Tab.Screen name="Toasts" component={ToastsView} />
-      <Tab.Screen name="Testing" component={TestView} />
     </Tab.Navigator>
   </NavigationContainer>
 );

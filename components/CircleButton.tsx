@@ -13,16 +13,19 @@ export const CircleButton: React.FC<TouchableOpacityProps> = ({
 }) => {
   return (
     <TouchableOpacity
-      style={{
-        width: SIZE,
-        height: SIZE,
-        borderRadius: SIZE / 2,
-        borderWidth: StyleSheet.hairlineWidth,
-        borderColor: 'lightgray',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-      }}
+      style={[
+        rest.style,
+        {
+          width: SIZE,
+          height: SIZE,
+          borderRadius: SIZE / 2,
+          borderWidth: StyleSheet.hairlineWidth,
+          borderColor: 'lightgray',
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: 'white',
+        },
+      ]}
       {...rest}
     >
       {children}
