@@ -5,14 +5,19 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Balloon } from './Balloon';
 import { wait } from '../../utils/wait';
 import { useCallback } from 'react';
-import { BalloonType, getBalloonDisplayX, getRandomColor } from './helpers';
+import {
+  BalloonType,
+  getBalloonDisplayX,
+  getRandomColor,
+  getRandomShape,
+} from './helpers';
 
 const dx = 25;
 
 /**
  * Shoot confetti everywhere
  */
-export const ConfettiView: React.FC = () => {
+export const LoveView: React.FC = () => {
   // Local state
   const [isPressed, setIsPressed] = React.useState(false);
   const [currX, setCurrX] = React.useState(0);
@@ -29,8 +34,9 @@ export const ConfettiView: React.FC = () => {
       oldBalloons.concat({
         x: currX,
         displayX: getBalloonDisplayX(currX),
-        color: 'blue',
+        color: getRandomColor(),
         size: 45,
+        shape: getRandomShape(),
       }),
     );
   };
@@ -42,7 +48,7 @@ export const ConfettiView: React.FC = () => {
   // Effect to add balloon
   React.useEffect(() => {
     if (!isPressed) return;
-    wait(150).then(addBalloon);
+    wait(50).then(addBalloon);
   }, [isPressed, currX]);
 
   return (

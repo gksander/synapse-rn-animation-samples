@@ -34,7 +34,7 @@ export const Balloon: React.FC<{
 
   return (
     <AnimIcon
-      name="balloon"
+      name={balloon.shape}
       color={balloon.color}
       size={balloon.size}
       style={{

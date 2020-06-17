@@ -5,7 +5,7 @@ import { ToastsView } from './views/Toasts/Toasts.view';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { DownloadView } from './views/Download/Download.view';
 import { DashboardView } from './views/Dashboard/Dashboard.view';
-import { ConfettiView } from './views/Confetti/Confetti.view';
+import { LoveView } from './views/Love/Love.view';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +19,7 @@ const App: React.FC = () => (
               Dashboard: 'tablet-dashboard',
               Toasts: 'toaster-oven',
               Download: 'download',
-              Confetti: 'air-horn',
+              Love: 'heart-outline',
             } as any)[route.name as any] || 'access-point';
 
           return (
@@ -32,7 +32,7 @@ const App: React.FC = () => (
         inactiveTintColor: 'gray',
       }}
     >
-      <Tab.Screen name="Confetti" component={ConfettiView} />
+      <Tab.Screen name="Love" component={LoveView} />
       <Tab.Screen name="Dashboard" component={DashboardView} />
       <Tab.Screen name="Download" component={DownloadView} />
       <Tab.Screen name="Toasts" component={ToastsView} />
