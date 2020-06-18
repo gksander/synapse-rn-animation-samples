@@ -1,6 +1,5 @@
 // Setup screens
 import * as React from 'react';
-import { HomeView } from './Home.view';
 import { CoreMethodsView } from './CoreMethods.view';
 import { SequenceView } from './Sequence.view';
 import { StaggerView } from './Stagger.view';
@@ -12,7 +11,6 @@ export const API_SCREENS: {
   path: string;
   component: React.FC;
 }[] = [
-  { title: 'API', path: 'ApiHome', component: HomeView },
   { title: 'Core Methods', path: 'ApiCoreMethods', component: CoreMethodsView },
   { title: 'Sequencing', path: 'ApiSequencing', component: SequenceView },
   { title: 'Staggering', path: 'ApiStaggering', component: StaggerView },
