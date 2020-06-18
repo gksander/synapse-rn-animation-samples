@@ -4,6 +4,7 @@ import { ToastContainer, ToastContext } from './ToastContainer';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TOAST_MESSAGES } from './messages';
 import { Toast } from './Toast';
+import { ScreenWrapper } from '../../../components/ScreenWrapper';
 
 /**
  * Animated toasts
@@ -53,6 +54,11 @@ export const ToastsViewBody: React.FC = () => {
 
 export const ToastsView = () => (
   <ToastContainer>
-    <ToastsViewBody />
+    <ScreenWrapper
+      title="Toasts"
+      subtitle="See /views/Examples/Toasts/Toasts.view.tsx"
+    >
+      <ToastsViewBody />
+    </ScreenWrapper>
   </ToastContainer>
 );

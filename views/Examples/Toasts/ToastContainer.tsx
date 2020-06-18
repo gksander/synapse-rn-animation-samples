@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { omit } from 'lodash';
-import { generateUID } from '../../utils/generateUID';
+import { generateUID } from '../../../utils/generateUID';
 
 export type ToastType = {
   id: string;

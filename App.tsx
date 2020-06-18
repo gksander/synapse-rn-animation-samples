@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { ToastsView } from './views/Toasts/Toasts.view';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { DownloadView } from './views/Download/Download.view';
-import { DashboardView } from './views/Dashboard/Dashboard.view';
-import { LoveView } from './views/Love/Love.view';
 import { SetupStack } from './views/Setup/Setup.stack';
 import { ApiStack } from './views/API/Api.stack';
+import { ExamplesStack } from './views/Examples/Examples.stack';
+import { InterpolateHomeView } from './views/Interpolate/InterpolateHome.view';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,10 +18,8 @@ const App: React.FC = () => (
             ({
               Setup: 'wrench',
               API: 'cogs',
-              Dashboard: 'tablet-dashboard',
-              Toasts: 'toaster-oven',
-              Download: 'download',
-              Love: 'heart-outline',
+              Examples: 'sitemap',
+              Interpolation: 'chart-bell-curve',
             } as any)[route.name as any] || 'access-point';
 
           return (
@@ -38,9 +34,8 @@ const App: React.FC = () => (
     >
       <Tab.Screen name="Setup" component={SetupStack} />
       <Tab.Screen name="API" component={ApiStack} />
-      <Tab.Screen name="Love" component={LoveView} />
-      <Tab.Screen name="Download" component={DownloadView} />
-      <Tab.Screen name="Toasts" component={ToastsView} />
+      <Tab.Screen name="Interpolation" component={InterpolateHomeView} />
+      <Tab.Screen name="Examples" component={ExamplesStack} />
     </Tab.Navigator>
   </NavigationContainer>
 );

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import { CircleButton } from '../../components/CircleButton';
+import { CircleButton } from '../../../components/CircleButton';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Balloon } from './Balloon';
-import { wait } from '../../utils/wait';
+import { wait } from '../../../utils/wait';
 import { useCallback } from 'react';
 import {
   BalloonType,
@@ -11,6 +11,7 @@ import {
   getRandomColor,
   getRandomShape,
 } from './helpers';
+import { ScreenWrapper } from '../../../components/ScreenWrapper';
 
 const dx = 25;
 
@@ -52,17 +53,29 @@ export const LoveView: React.FC = () => {
   }, [isPressed, currX]);
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      {balloons.map((balloon) => (
-        <Balloon
-          key={`balloon-${balloon.x}`}
-          balloon={balloon}
-          removeBalloon={removeBalloon}
-        />
-      ))}
-      <CircleButton onPressIn={onPressIn} onPressOut={onPressOut}>
-        <MaterialCommunityIcons name="air-horn" size={30} />
-      </CircleButton>
-    </View>
+    <ScreenWrapper
+      title="Love Blast"
+      subtitle="See /views/Examples/Love/Love.view.tsx"
+    >
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+        }}
+      >
+        {balloons.map((balloon) => (
+          <Balloon
+            key={`balloon-${balloon.x}`}
+            balloon={balloon}
+            removeBalloon={removeBalloon}
+          />
+        ))}
+        <CircleButton onPressIn={onPressIn} onPressOut={onPressOut}>
+          <MaterialCommunityIcons name="air-horn" size={30} />
+        </CircleButton>
+      </View>
+    </ScreenWrapper>
   );
 };

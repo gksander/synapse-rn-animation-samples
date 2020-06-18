@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { View, Animated, ActivityIndicator, Easing } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { CircleButton } from '../../components/CircleButton';
-import { wait } from '../../utils/wait';
+import { CircleButton } from '../../../components/CircleButton';
+import { wait } from '../../../utils/wait';
 
 // Create animated icon
 const AnimIcon = Animated.createAnimatedComponent(MaterialCommunityIcons);

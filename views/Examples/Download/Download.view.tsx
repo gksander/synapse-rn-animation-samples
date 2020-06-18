@@ -2,11 +2,15 @@ import * as React from 'react';
 import { View, Text } from 'react-native';
 import { DownloadButton } from './DownloadButton';
 import { FailedDownload } from './FailedDownload';
+import { ScreenWrapper } from '../../../components/ScreenWrapper';
 
 export const DownloadView: React.FC = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <ScreenWrapper
+      title="Download Button"
+      subtitle="See /views/Examples/Download/Download.view.tsx"
+    >
       <DownloadButton />
-    </View>
+    </ScreenWrapper>
   );
 };
