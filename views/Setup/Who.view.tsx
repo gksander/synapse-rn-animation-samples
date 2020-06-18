@@ -37,7 +37,7 @@ const Balloon: React.FC = () => {
 // Our view
 export const WhoView: React.FC = () => {
   return (
-    <ScreenWrapper title="Who?" subtitle="See views/Setup/When.view.tsx">
+    <ScreenWrapper title="Who?" subtitle="See views/Setup/Who.view.tsx">
       <Balloon />
     </ScreenWrapper>
   );
