@@ -6,6 +6,7 @@ import { StaggerView } from './Stagger.view';
 import { ParallelView } from './Parallel.view';
 import { LoopView } from './Loop.view';
 import { DelayView } from './Delay.view';
+import { DiffClampView } from './DiffClamp.view';
 
 // @HANK - Add screens here. Copy, paste, and tweak accordingly.
 // title is the display title.
@@ -22,6 +23,7 @@ export const API_SCREENS: {
   { title: 'Parallel', path: 'ApiParallel', component: ParallelView },
   { title: 'Loop', path: 'ApiLoop', component: LoopView },
   { title: 'Delay', path: 'ApiDelay', component: DelayView },
+  { title: 'DiffClamp', path: 'ApiDiffClamp', component: DiffClampView },
 ];
 
 export const API_SCREENS_META = API_SCREENS.map((screen) => ({
