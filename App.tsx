@@ -6,6 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { DownloadView } from './views/Download/Download.view';
 import { DashboardView } from './views/Dashboard/Dashboard.view';
 import { LoveView } from './views/Love/Love.view';
+import { SetupStack } from './views/Setup/Setup.stack';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,6 +17,7 @@ const App: React.FC = () => (
         tabBarIcon: ({ color, size }) => {
           const iconName =
             ({
+              Setup: 'wrench',
               Dashboard: 'tablet-dashboard',
               Toasts: 'toaster-oven',
               Download: 'download',
@@ -32,6 +34,7 @@ const App: React.FC = () => (
         inactiveTintColor: 'gray',
       }}
     >
+      <Tab.Screen name="Setup" component={SetupStack} />
       <Tab.Screen name="Love" component={LoveView} />
       <Tab.Screen name="Dashboard" component={DashboardView} />
       <Tab.Screen name="Download" component={DownloadView} />
