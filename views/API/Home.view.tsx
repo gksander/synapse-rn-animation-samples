@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { SETUP_SCREENS_META } from './Setup.stack';
+import { API_SCREENS_META } from './Api.stack';
 
 export const HomeView: React.FC = () => {
   const navigation = useNavigation();
 
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
-      {SETUP_SCREENS_META.map((view) => (
+      {API_SCREENS_META.map((view) => (
         <TouchableOpacity
           key={view.path}
           onPress={() => navigation.navigate(view.path)}

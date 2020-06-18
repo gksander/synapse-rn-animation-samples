@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
 
-export const SetupScreenWrapper: React.FC<{
+export const ScreenWrapper: React.FC<{
   title: string;
   subtitle?: string;
 }> = ({ title, subtitle = '', children }) => {
@@ -15,6 +15,7 @@ export const SetupScreenWrapper: React.FC<{
         }}
       >
         <Text style={{ fontSize: 36 }}>{title}</Text>
+        {Boolean(subtitle) && <Text style={{ color: 'gray' }}>{subtitle}</Text>}
       </View>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         {children}

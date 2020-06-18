@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Animated, Easing } from 'react-native';
-import { SetupScreenWrapper } from './SetupScreenWrapper';
+import { ScreenWrapper } from '../../components/ScreenWrapper';
 
 /**
  * Balloon component
@@ -28,8 +28,8 @@ const Balloon: React.FC = () => {
 // Our view
 export const WhenView: React.FC = () => {
   return (
-    <SetupScreenWrapper title="When?">
+    <ScreenWrapper title="When?" subtitle="See views/Setup/When.view.tsx">
       <Balloon />
-    </SetupScreenWrapper>
+    </ScreenWrapper>
   );
 };

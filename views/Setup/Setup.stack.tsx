@@ -10,59 +10,45 @@ import { WhoView } from './Who.view';
 
 const Stack = createStackNavigator();
 
+// Setup screens
+export const SETUP_SCREENS: {
+  title: string;
+  path: string;
+  component: React.FC;
+}[] = [
+  { title: 'Setup', path: 'SetupHome', component: HomeView },
+  { title: 'Initialize', path: 'SetupInitialize', component: InitializeView },
+  { title: 'What?', path: 'SetupWhat', component: WhatView },
+  { title: 'When?', path: 'SetupWhen', component: WhenView },
+  { title: 'Who?', path: 'SetupWho', component: WhoView },
+];
+export const SETUP_SCREENS_META = SETUP_SCREENS.map((screen) => ({
+  title: screen.title,
+  path: screen.path,
+}));
+
 export const SetupStack: React.FC = () => {
   return (
     <Stack.Navigator>
-      {/* Home view */}
-      <Stack.Screen
-        name="SetupHome"
-        component={HomeView}
-        options={{
-          title: 'Setup',
-          headerRight: () => (
-            <HeaderRight path="SetupInitialize" title="Initialize" />
-          ),
-        }}
-      />
-      {/* Initializing */}
-      <Stack.Screen
-        name="SetupInitialize"
-        component={InitializeView}
-        options={{
-          title: 'Initialize',
-          headerLeft: ({ label }) => <HeaderBack />,
-          headerRight: () => <HeaderRight path="SetupWhat" title="What?" />,
-        }}
-      />
-      {/* What? */}
-      <Stack.Screen
-        name="SetupWhat"
-        component={WhatView}
-        options={{
-          title: 'What?',
-          headerLeft: ({ label }) => <HeaderBack />,
-          headerRight: () => <HeaderRight path="SetupWhen" title="When?" />,
-        }}
-      />
-      {/* When? */}
-      <Stack.Screen
-        name="SetupWhen"
-        component={WhenView}
-        options={{
-          title: 'When?',
-          headerLeft: ({ label }) => <HeaderBack />,
-          headerRight: () => <HeaderRight path="SetupWho" title="Who?" />,
-        }}
-      />
-      {/* Who? */}
-      <Stack.Screen
-        name="SetupWho"
-        component={WhoView}
-        options={{
-          title: 'Who?',
-          headerLeft: ({ label }) => <HeaderBack />,
-        }}
-      />
+      {SETUP_SCREENS.map((screen, i) => (
+        <Stack.Screen
+          name={screen.path}
+          component={screen.component}
+          options={{
+            title: screen.title,
+            headerLeft: i === 0 ? () => null : () => <HeaderBack />,
+            headerRight:
+              i === SETUP_SCREENS.length - 1
+                ? () => null
+                : () => (
+                    <HeaderRight
+                      path={SETUP_SCREENS[i + 1].path}
+                      title={SETUP_SCREENS[i + 1].title}
+                    />
+                  ),
+          }}
+        />
+      ))}
     </Stack.Navigator>
   );
 };

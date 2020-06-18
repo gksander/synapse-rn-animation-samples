@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text, View, Animated } from 'react-native';
-import { SetupScreenWrapper } from './SetupScreenWrapper';
+import { ScreenWrapper } from '../../components/ScreenWrapper';
 
 /**
  * Get things setup
@@ -27,8 +27,11 @@ class OtherBalloon extends React.Component<any, any> {
  */
 export const InitializeView: React.FC = () => {
   return (
-    <SetupScreenWrapper title="Initialize">
+    <ScreenWrapper
+      title="Initialize"
+      subtitle="See views/Setup/Initialize.view.tsx"
+    >
       <Balloon />
-    </SetupScreenWrapper>
+    </ScreenWrapper>
   );
 };
