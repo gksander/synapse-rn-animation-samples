@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Text, View, Animated } from 'react-native';
-import { PageTitle } from '../../components/PageTitle';
 import { SetupScreenWrapper } from './SetupScreenWrapper';
 
 /**
