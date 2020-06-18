@@ -3,26 +3,26 @@ import { ScreenWrapper } from '../../components/ScreenWrapper';
 import { Animated, Text, View } from 'react-native';
 import { Button } from '../../components/Button';
 
-export const StaggerView: React.FC = () => {
+export const ParallelView: React.FC = () => {
   // Animated values
-  const translateY1 = React.useRef(new Animated.Value(0)).current;
-  const translateY2 = React.useRef(new Animated.Value(0)).current;
+  const translateY = React.useRef(new Animated.Value(0)).current;
+  const opacity = React.useRef(new Animated.Value(1)).current;
 
-  // Animated stagger
-  const animateStagger = () => {
-    translateY1.setValue(0);
-    translateY2.setValue(0);
+  // Animated parallel
+  const animateParallel = () => {
+    translateY.setValue(0);
+    opacity.setValue(1);
 
-    Animated.stagger(500, [
+    Animated.parallel([
       // First one
-      Animated.timing(translateY1, {
+      Animated.timing(translateY, {
         toValue: -100,
         duration: 1500,
         useNativeDriver: true,
       }),
       // And second one
-      Animated.timing(translateY2, {
-        toValue: -100,
+      Animated.timing(opacity, {
+        toValue: 0,
         duration: 1500,
         useNativeDriver: true,
       }),
@@ -31,8 +31,8 @@ export const StaggerView: React.FC = () => {
 
   return (
     <ScreenWrapper
-      title="Staggering Animations"
-      subtitle="See /views/API/Stagger.view.tsx"
+      title="Parallel Animations"
+      subtitle="See /views/API/Parallel.view.tsx"
     >
       <View style={{ padding: 16 }}>
         <View style={{ flexDirection: 'row' }}>
@@ -42,7 +42,7 @@ export const StaggerView: React.FC = () => {
               height: 50,
               backgroundColor: 'tomato',
               marginHorizontal: 8,
-              transform: [{ translateY: translateY1 }],
+              transform: [{ translateY }],
             }}
           />
           <Animated.View
@@ -51,11 +51,11 @@ export const StaggerView: React.FC = () => {
               height: 50,
               backgroundColor: 'tomato',
               marginHorizontal: 8,
-              transform: [{ translateY: translateY2 }],
+              opacity,
             }}
           />
         </View>
-        <Button onPress={animateStagger}>Animate it!</Button>
+        <Button onPress={animateParallel}>Animate it!</Button>
       </View>
     </ScreenWrapper>
   );
