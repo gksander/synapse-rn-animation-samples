@@ -12,11 +12,18 @@ export const LoopView: React.FC = () => {
     translateY.setValue(0);
 
     Animated.loop(
-      Animated.timing(translateY, {
-        toValue: -100,
-        duration: 1500,
-      }),
-      {},
+      Animated.sequence([
+        // Bring up...
+        Animated.timing(translateY, {
+          toValue: -100,
+          duration: 1500,
+        }),
+
+        // And drop it down!
+        Animated.spring(translateY, {
+          toValue: 0,
+        }),
+      ]),
     ).start(); // DONT FORGET TO START IT!
   };
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { SETUP_SCREENS_META } from './Setup.stack';
+import { SETUP_SCREENS_META } from './Setup.config';
 
 export const HomeView: React.FC = () => {
   const navigation = useNavigation();
