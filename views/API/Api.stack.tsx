@@ -7,31 +7,31 @@ import { HomeView } from './Home.view';
 
 const Stack = createStackNavigator();
 
+const SCREENS = [{ title: 'API', path: 'ApiHome', component: HomeView }].concat(
+  API_SCREENS,
+);
+
 export const ApiStack: React.FC = () => {
   return (
     <Stack.Navigator>
-      {[{ title: 'API', path: 'ApiHome', component: HomeView }]
-        .concat(API_SCREENS)
-        .map((screen, i) => (
-          <Stack.Screen
-            key={screen.path}
-            name={screen.path}
-            component={screen.component}
-            options={{
-              title: screen.title,
-              headerLeft: i === 0 ? () => null : () => <HeaderBack />,
-              headerRight:
-                i === API_SCREENS.length - 1
-                  ? () => null
-                  : () => (
-                      <HeaderRight
-                        path={API_SCREENS[i + 1].path}
-                        title={API_SCREENS[i + 1].title}
-                      />
-                    ),
-            }}
-          />
-        ))}
+      {SCREENS.map((screen, i) => (
+        <Stack.Screen
+          key={screen.path}
+          name={screen.path}
+          component={screen.component}
+          options={{
+            title: screen.title,
+            headerLeft: i === 0 ? () => null : () => <HeaderBack />,
+            headerRight: () => {
+              const nextScreen = SCREENS[i + 1];
+              if (!nextScreen) return;
+              return (
+                <HeaderRight path={nextScreen.path} title={nextScreen.title} />
+              );
+            },
+          }}
+        />
+      ))}
     </Stack.Navigator>
   );
 };

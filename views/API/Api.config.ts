@@ -17,9 +17,8 @@ export const API_SCREENS: {
   { title: 'Parallel', path: 'ApiParallel', component: ParallelView },
   { title: 'Loop', path: 'ApiLoop', component: LoopView },
 ];
+
 export const API_SCREENS_META = API_SCREENS.map((screen) => ({
   title: screen.title,
   path: screen.path,
 }));
-
-console.log(API_SCREENS_META);
