@@ -5,6 +5,10 @@ import { WhatView } from './What.view';
 import { WhenView } from './When.view';
 import { WhoView } from './Who.view';
 
+// @HANK - Add screens here. Copy, paste, and tweak accordingly.
+// title is the display title.
+// path is the router path, just make that unique.
+// component is the View
 export const SETUP_SCREENS: {
   title: string;
   path: string;

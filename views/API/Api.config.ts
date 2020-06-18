@@ -6,6 +6,10 @@ import { StaggerView } from './Stagger.view';
 import { ParallelView } from './Parallel.view';
 import { LoopView } from './Loop.view';
 
+// @HANK - Add screens here. Copy, paste, and tweak accordingly.
+// title is the display title.
+// path is the router path, just make that unique.
+// component is the View
 export const API_SCREENS: {
   title: string;
   path: string;
