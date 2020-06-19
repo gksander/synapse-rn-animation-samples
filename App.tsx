@@ -2,6 +2,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Intro } from './views/Introduction/Intro.view';
 import { SetupStack } from './views/Setup/Setup.stack';
 import { ApiStack } from './views/API/Api.stack';
 import { ExamplesStack } from './views/Examples/Examples.stack';
@@ -32,6 +33,7 @@ const App: React.FC = () => (
         inactiveTintColor: 'gray',
       }}
     >
+      <Tab.Screen name="Intro" component={Intro} />
       <Tab.Screen name="Setup" component={SetupStack} />
       <Tab.Screen name="API" component={ApiStack} />
       <Tab.Screen name="Interpolation" component={InterpolateHomeView} />

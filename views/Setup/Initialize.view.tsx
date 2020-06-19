@@ -31,6 +31,10 @@ export const InitializeView: React.FC = () => {
       title="Initialize"
       subtitle="See views/Setup/Initialize.view.tsx"
     >
+      <View style={{}}>
+        <Text>1. Your Imports</Text>
+        <Text>2. Your const/values</Text>
+      </View>
       <Balloon />
     </ScreenWrapper>
   );
