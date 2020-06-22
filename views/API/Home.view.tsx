@@ -22,7 +22,9 @@ export const HomeView: React.FC = () => {
             marginHorizontal: 5,
           }}
         >
-          <Text style={{ fontSize: 16 }}>{view.title}</Text>
+          <Text style={{ fontSize: 16, textAlign: 'center' }}>
+            {view.title}
+          </Text>
         </TouchableOpacity>
       ))}
     </View>

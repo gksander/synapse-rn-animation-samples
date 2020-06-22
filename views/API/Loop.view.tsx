@@ -6,25 +6,31 @@ import { Button } from '../../components/Button';
 export const LoopView: React.FC = () => {
   // Animated values
   const translateY = React.useRef(new Animated.Value(0)).current;
+  const [onOffState, setOnOffState] = React.useState(false);
+
+  const animationLoop = Animated.loop(
+    Animated.sequence([
+      // Bring up...
+      Animated.timing(translateY, {
+        toValue: -100,
+        duration: 1500,
+      }),
+
+      // And drop it down!
+      Animated.spring(translateY, {
+        toValue: 0,
+      }),
+    ]),
+  );
 
   // Animated parallel
   const animateLoop = () => {
-    translateY.setValue(0);
-
-    Animated.loop(
-      Animated.sequence([
-        // Bring up...
-        Animated.timing(translateY, {
-          toValue: -100,
-          duration: 1500,
-        }),
-
-        // And drop it down!
-        Animated.spring(translateY, {
-          toValue: 0,
-        }),
-      ]),
-    ).start(); // DONT FORGET TO START IT!
+    setOnOffState(!onOffState);
+    if (onOffState === true) {
+      animationLoop.start();
+    } else {
+      translateY.stopAnimation();
+    }
   };
 
   return (
@@ -42,7 +48,7 @@ export const LoopView: React.FC = () => {
             transform: [{ translateY }],
           }}
         />
-        <Button onPress={animateLoop}>Animate it!</Button>
+        <Button onPress={animateLoop}>{onOffState ? 'Start' : 'Stop'}</Button>
       </View>
     </ScreenWrapper>
   );

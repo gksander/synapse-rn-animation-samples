@@ -6,22 +6,29 @@ import { Button } from '../../components/Button';
 export const CoreMethodsView: React.FC = () => {
   // Animated translateY value
   const translateY = React.useRef(new Animated.Value(0)).current;
+  const [animValue, setAnimValue] = React.useState(108);
 
   // Timing
   const animateTiming = () => {
-    translateY.setValue(0);
+    setAnimValue(108 - animValue);
     Animated.timing(translateY, {
-      toValue: -100,
-      duration: 1000,
+      toValue: animValue,
+      duration: 300,
       useNativeDriver: true,
     }).start();
   };
 
   // Spring
   const animateSpring = () => {
-    translateY.setValue(0);
+    setAnimValue(108 - animValue);
     Animated.spring(translateY, {
-      toValue: -100,
+      toValue: animValue,
+      friction: 5, // lower the bouncier default at 7
+      tension: 60, // higher the faster default at 40
+
+      //spring settings come in sets and can only be used one set at a time
+      // speed: 100, // default 12
+      // bounciness: 8, // default 8
       useNativeDriver: true,
     }).start();
   };
@@ -32,18 +39,29 @@ export const CoreMethodsView: React.FC = () => {
       title="Core Methods"
       subtitle="See /views/API/CoreMethods.view.tsx"
     >
-      <View>
+      <View style={{ width: '100%', flex: 1, justifyContent: 'center' }}>
         <Animated.View
           style={{
-            width: 300,
+            marginHorizontal: 8,
             height: 50,
             backgroundColor: 'tomato',
+
             transform: [{ translateY }],
           }}
         />
         <View style={{ flexDirection: 'row' }}>
-          <Button onPress={animateTiming}>Animate.timing</Button>
-          <Button onPress={animateSpring}>Animate.spring</Button>
+          <View style={{ flex: 1, margin: 8 }}>
+            <Button onPress={animateTiming}>.timing()</Button>
+          </View>
+          <View style={{ flex: 1, margin: 8 }}>
+            <Button onPress={animateSpring}>.spring()</Button>
+          </View>
+        </View>
+        <View style={{ top: 50, alignSelf: 'center' }}>
+          <Text style={{ fontSize: 16, textAlign: 'center' }}>.decay()</Text>
+          <Text style={{ color: 'grey', fontWeight: '300' }}>
+            the lost child
+          </Text>
         </View>
       </View>
     </ScreenWrapper>
