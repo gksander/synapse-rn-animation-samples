@@ -4,56 +4,38 @@ import { ScreenWrapper } from '../../components/ScreenWrapper';
 import { Animated, Text, View } from 'react-native';
 import { Button } from '../../components/Button';
 
-export const CommonView: React.FC = () => {
+export const ComposerView: React.FC = () => {
   // Animated translateY value
   const translateY1 = React.useRef(new Animated.Value(0)).current;
   const translateY2 = React.useRef(new Animated.Value(0)).current;
   const [animValue, setAnimValue] = React.useState(100);
 
+  const coreAnimation = [
+    Animated.timing(translateY1, {
+      toValue: animValue,
+      duration: 500,
+    }),
+    Animated.spring(translateY2, {
+      toValue: animValue,
+    }),
+  ];
+
   // Animated sequence
   const animateSequence = () => {
     setAnimValue(100 - animValue);
-    Animated.sequence([
-      Animated.timing(translateY1, {
-        toValue: animValue,
-        duration: 500,
-      }),
-      Animated.spring(translateY2, {
-        toValue: animValue,
-      }),
-    ]).start(); // DONT FORGET TO START IT!
+    Animated.sequence(coreAnimation).start(); // DONT FORGET TO START IT!
   };
 
   // Animated stagger
   const animateStagger = () => {
     setAnimValue(100 - animValue);
-    Animated.stagger(250, [
-      Animated.timing(translateY1, {
-        toValue: animValue,
-        duration: 500,
-      }),
-      Animated.spring(translateY2, {
-        toValue: animValue,
-        friction: 5,
-        tension: 40,
-      }),
-    ]).start(); // DONT FORGET TO START IT!
+    Animated.stagger(250, coreAnimation).start(); // DONT FORGET TO START IT!
   };
 
   // Animated stagger
   const animateParallel = () => {
     setAnimValue(100 - animValue);
-    Animated.parallel([
-      Animated.timing(translateY1, {
-        toValue: animValue,
-        duration: 500,
-      }),
-      Animated.spring(translateY2, {
-        toValue: animValue,
-        friction: 5,
-        tension: 40,
-      }),
-    ]).start(); // DONT FORGET TO START IT!
+    Animated.parallel(coreAnimation).start(); // DONT FORGET TO START IT!
   };
 
   return (

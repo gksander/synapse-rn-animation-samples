@@ -6,7 +6,7 @@ import { Intro } from './views/Introduction/Intro.view';
 import { SetupStack } from './views/Setup/Setup.stack';
 import { ApiStack } from './views/API/Api.stack';
 import { ExamplesStack } from './views/Examples/Examples.stack';
-import { InterpolateHomeView } from './views/Interpolate/InterpolateHome.view';
+import { InterpolateStack } from './views/Interpolate/Interpolate.stack';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,7 +36,7 @@ const App: React.FC = () => (
       <Tab.Screen name="Intro" component={Intro} />
       <Tab.Screen name="Setup" component={SetupStack} />
       <Tab.Screen name="API" component={ApiStack} />
-      <Tab.Screen name="Interpolation" component={InterpolateHomeView} />
+      <Tab.Screen name="Interpolation" component={InterpolateStack} />
       <Tab.Screen name="Examples" component={ExamplesStack} />
     </Tab.Navigator>
   </NavigationContainer>

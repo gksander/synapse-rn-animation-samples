@@ -1,7 +1,7 @@
 // Setup screens
 import * as React from 'react';
 import { CoreMethodsView } from './CoreMethods.view';
-import { CommonView } from './Common.view';
+import { ComposerView } from './Composer.view';
 import { LoopView } from './Loop.view';
 import { DelayView } from './Delay.view';
 import { DiffClampView } from './DiffClamp.view';
@@ -21,9 +21,9 @@ export const API_SCREENS: {
     component: CoreMethodsView,
   },
   {
-    title: `Common ${'\n'} .sequence()${'\n'} .stagger()${'\n'} .parallel()`,
-    path: 'ApiCommonView',
-    component: CommonView,
+    title: `Composer ${'\n'} .sequence()${'\n'} .stagger()${'\n'} .parallel()`,
+    path: 'ApiComposerView',
+    component: ComposerView,
   },
   { title: 'Loop', path: 'ApiLoop', component: LoopView },
   { title: 'Delay', path: 'ApiDelay', component: DelayView },

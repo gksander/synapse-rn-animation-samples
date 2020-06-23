@@ -6,32 +6,27 @@ import { Button } from '../../components/Button';
 export const LoopView: React.FC = () => {
   // Animated values
   const translateY = React.useRef(new Animated.Value(0)).current;
-  const [onOffState, setOnOffState] = React.useState(false);
+  const [startAnimation, setStartAnimation] = React.useState(false);
 
-  const animationLoop = Animated.loop(
-    Animated.sequence([
-      // Bring up...
-      Animated.timing(translateY, {
-        toValue: -100,
-        duration: 1500,
-      }),
-
-      // And drop it down!
-      Animated.spring(translateY, {
-        toValue: 0,
-      }),
-    ]),
-  );
-
-  // Animated parallel
-  const animateLoop = () => {
-    setOnOffState(!onOffState);
-    if (onOffState === true) {
-      animationLoop.start();
+  React.useEffect(() => {
+    if (startAnimation === true) {
+      Animated.loop(
+        Animated.sequence([
+          // Bring up...
+          Animated.timing(translateY, {
+            toValue: -100,
+            duration: 1500,
+          }),
+          // And drop it down!
+          Animated.spring(translateY, {
+            toValue: 0,
+          }),
+        ]),
+      ).start();
     } else {
       translateY.stopAnimation();
     }
-  };
+  }, [startAnimation]);
 
   return (
     <ScreenWrapper
@@ -48,7 +43,13 @@ export const LoopView: React.FC = () => {
             transform: [{ translateY }],
           }}
         />
-        <Button onPress={animateLoop}>{onOffState ? 'Start' : 'Stop'}</Button>
+        <Button
+          onPress={() => {
+            setStartAnimation(!startAnimation);
+          }}
+        >
+          {startAnimation === true ? 'Stop' : 'Start'}
+        </Button>
       </View>
     </ScreenWrapper>
   );
