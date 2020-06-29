@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScreenWrapper } from '../../components/ScreenWrapper';
-import { Animated, Text } from 'react-native';
+import { Animated, Text, View } from 'react-native';
 
 export const Rotation: React.FC = () => {
   // This will vary from 0 to 1
@@ -19,10 +19,10 @@ export const Rotation: React.FC = () => {
   }, []);
 
   // Interpolated values
-  // Rotate from 0deg to 360 deg.
-  const rotateZ = animValue.interpolate({
+  // Translate from 0 to 300 units
+  const translateY = animValue.interpolate({
     inputRange: [0, 1],
-    outputRange: ['0deg', '360deg'],
+    outputRange: [0, 300],
   });
   // Background color from purple-ish to green-ish, then to pink-ish
   const backgroundColor = animValue.interpolate({
@@ -32,14 +32,16 @@ export const Rotation: React.FC = () => {
 
   return (
     <ScreenWrapper title="Interpolation">
-      <Animated.View
-        style={{
-          width: 200,
-          height: 200,
-          backgroundColor,
-          transform: [{ rotateZ }],
-        }}
-      />
+      <View style={{ flex: 1 }}>
+        <Animated.View
+          style={{
+            width: 200,
+            height: 200,
+            backgroundColor,
+            transform: [{ translateY }],
+          }}
+        />
+      </View>
     </ScreenWrapper>
   );
 };
