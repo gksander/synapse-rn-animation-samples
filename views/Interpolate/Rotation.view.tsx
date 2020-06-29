@@ -11,7 +11,7 @@ export const Rotation: React.FC = () => {
       Animated.sequence([
         Animated.timing(animValue, {
           toValue: 1,
-          duration: 2000,
+          duration: 3000,
         }),
         Animated.delay(1200),
       ]),
@@ -24,23 +24,18 @@ export const Rotation: React.FC = () => {
     inputRange: [0, 1],
     outputRange: ['0deg', '360deg'],
   });
-  // Background color from purple-ish to pink-ish
+  // Background color from purple-ish to green-ish, then to pink-ish
   const backgroundColor = animValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['#1c118f', '#f765e9'],
-  });
-  // Size from 0 to 1, but will stay "small" for longer
-  const size = animValue.interpolate({
     inputRange: [0, 0.75, 1],
-    outputRange: [50, 80, 250],
+    outputRange: ['#1c118f', '#2b704a', '#f765e9'],
   });
 
   return (
     <ScreenWrapper title="Interpolation">
       <Animated.View
         style={{
-          width: size,
-          height: size,
+          width: 200,
+          height: 200,
           backgroundColor,
           transform: [{ rotateZ }],
         }}
