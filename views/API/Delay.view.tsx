@@ -19,7 +19,7 @@ export const DelayView: React.FC = () => {
         useNativeDriver: true,
       }),
 
-      Animated.delay(300),
+      Animated.delay(800),
 
       // And drop it down!
       Animated.spring(translateY, {

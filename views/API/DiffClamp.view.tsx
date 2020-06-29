@@ -30,6 +30,7 @@ export const DiffClampView: React.FC = () => {
     ]).start(); // DONT FORGET TO START IT!
   };
 
+  // A clamped version! Won't go below -100!
   const clampedTranslateY = Animated.diffClamp(translateY, -100, 0);
 
   return (

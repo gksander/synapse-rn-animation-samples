@@ -6,10 +6,11 @@ import { Button } from '../../components/Button';
 export const LoopView: React.FC = () => {
   // Animated values
   const translateY = React.useRef(new Animated.Value(0)).current;
-  const [startAnimation, setStartAnimation] = React.useState(false);
+  const [isAnimationRunning, setIsAnimationRunning] = React.useState(false);
 
   React.useEffect(() => {
-    if (startAnimation === true) {
+    // When we want to run the animation, call the loop
+    if (isAnimationRunning) {
       Animated.loop(
         Animated.sequence([
           // Bring up...
@@ -23,10 +24,12 @@ export const LoopView: React.FC = () => {
           }),
         ]),
       ).start();
-    } else {
+    }
+    // Otherwise, kill the animation
+    else {
       translateY.stopAnimation();
     }
-  }, [startAnimation]);
+  }, [isAnimationRunning]);
 
   return (
     <ScreenWrapper
@@ -43,12 +46,8 @@ export const LoopView: React.FC = () => {
             transform: [{ translateY }],
           }}
         />
-        <Button
-          onPress={() => {
-            setStartAnimation(!startAnimation);
-          }}
-        >
-          {startAnimation === true ? 'Stop' : 'Start'}
+        <Button onPress={() => setIsAnimationRunning((v) => !v)}>
+          {isAnimationRunning ? 'Stop' : 'Start'}
         </Button>
       </View>
     </ScreenWrapper>

@@ -6,13 +6,14 @@ import { Button } from '../../components/Button';
 export const CoreMethodsView: React.FC = () => {
   // Animated translateY value
   const translateY = React.useRef(new Animated.Value(0)).current;
-  const [animValue, setAnimValue] = React.useState(108);
+  const [destinationValue, setDestinationValue] = React.useState(108);
 
   // Timing
   const animateTiming = () => {
-    setAnimValue(108 - animValue);
+    setDestinationValue(108 - destinationValue);
+
     Animated.timing(translateY, {
-      toValue: animValue,
+      toValue: destinationValue,
       duration: 300,
       useNativeDriver: true,
     }).start();
@@ -20,9 +21,10 @@ export const CoreMethodsView: React.FC = () => {
 
   // Spring
   const animateSpring = () => {
-    setAnimValue(108 - animValue);
+    setDestinationValue(108 - destinationValue);
+
     Animated.spring(translateY, {
-      toValue: animValue,
+      toValue: destinationValue,
       friction: 5, // lower the bouncier default at 7
       tension: 60, // higher the faster default at 40
 
