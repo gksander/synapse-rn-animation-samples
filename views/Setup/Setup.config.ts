@@ -15,9 +15,9 @@ export const SETUP_SCREENS: {
   component: React.FC;
 }[] = [
   { title: 'Initialize', path: 'SetupInitialize', component: InitializeView },
+  { title: 'Who?', path: 'SetupWho', component: WhoView },
   { title: 'What?', path: 'SetupWhat', component: WhatView },
   { title: 'When?', path: 'SetupWhen', component: WhenView },
-  { title: 'Who?', path: 'SetupWho', component: WhoView },
 ];
 export const SETUP_SCREENS_META = SETUP_SCREENS.map((screen) => ({
   title: screen.title,

@@ -22,7 +22,16 @@ const Balloon: React.FC = () => {
   }, []);
 
   // Do stuff...
-  return null;
+  return (
+    <Animated.View
+      style={{
+        width: 100,
+        height: 100,
+        backgroundColor: 'tomato',
+        opacity: animValue,
+      }}
+    />
+  );
 };
 
 // Our view
