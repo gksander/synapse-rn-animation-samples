@@ -1,6 +1,7 @@
 // Setup screens
 import * as React from 'react';
 import { InActionView } from './InAction.view';
+import { Rotation } from './Rotation.view';
 
 // @HANK - Add screens here. Copy, paste, and tweak accordingly.
 // title is the display title.
@@ -15,6 +16,11 @@ export const INTERPOLATE_SCREENS: {
     title: `See In Action`,
     path: 'InterpolateInAction',
     component: InActionView,
+  },
+  {
+    title: 'Rotation',
+    path: 'InterpolateRotation',
+    component: Rotation,
   },
 ];
 
